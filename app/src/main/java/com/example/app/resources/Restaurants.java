@@ -8,6 +8,9 @@ import java.util.Set;
 import com.example.app.models.RestaurantItem;
 import com.example.app.services.FoodServices;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -21,6 +24,7 @@ public class Restaurants {
     Restaurants(FoodServices foodServices) {
         this.foodServices = foodServices;
     }
+    @CrossOrigin(origins = "*")
     @GetMapping("/restaurantitems")
     public Set<RestaurantItem> getRestaurantItems(@RequestParam("searchWords") String searchTerm) throws Exception {
         List<String> list = new ArrayList<>(Arrays.asList(searchTerm.split(" ")));
