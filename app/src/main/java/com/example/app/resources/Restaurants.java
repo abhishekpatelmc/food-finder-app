@@ -1,5 +1,6 @@
 package com.example.app.resources;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,6 +22,7 @@ public class Restaurants {
     Restaurants(FoodServices foodServices) {
         this.foodServices = foodServices;
     }
+    @CrossOrigin(origins = "*")
     @GetMapping("/restaurantitems")
     public Set<RestaurantItem> getRestaurantItems(@RequestParam("searchWords") String searchTerm) throws Exception {
         List<String> list = new ArrayList<>(Arrays.asList(searchTerm.split(" ")));
